@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'; 
+import cookie from 'js-cookie'
 const AllCategory = () => {
   const [category, setCategory] = useState([])
   useEffect(()=> {
@@ -15,12 +16,12 @@ const AllCategory = () => {
     }
     fetch()
   },[])
-
+const token  = cookie.get('token')
   async function delet(id) {
     try{
       await axios.delete(`http://localhost:4000/api/vi/category/${id}`,{
         headers:{
-          authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGEyMjc2NjQxM2Y3MjI3NWZkNjQyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNzI3MzkwNSwiZXhwIjoxNzM3MzYwMzA1fQ.GsRuAam2v6uv84KmKfJkPD91ptS7aLwzYaiymNGttMU"
+          authorization:`Bearer ${token}`,
         }
       }
       )

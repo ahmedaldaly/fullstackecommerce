@@ -8,13 +8,15 @@ import AddProducts from './dashbord/Product/AddProducts'
 import AllCategory from './dashbord/Category/AllCategory';
 import AddCategory from './dashbord/Category/AddCategory';
 import AllOrder from './dashbord/order/AllOrder';
+import HomePage from './web/HomePage/HomePage';
 const App = () => {
   return (
     
       <Routes>
         <Route path='/' element={<Home/>}>
-      
+        <Route path='/' element={<HomePage/>}/>
         </Route> 
+
         <Route path='/dashbord' element ={<HomeDashbord/>}>
         <Route path='alluser' element ={<AllUser/>}/>
         <Route path='allproducts' element ={<AllProducts/>}/>

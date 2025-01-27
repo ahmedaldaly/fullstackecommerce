@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import BaseUrl from '../../../Api/BaseUrl';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-
+import cookie from 'js-cookie'
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [editMode, setEditMode] = useState(false);
@@ -27,13 +27,13 @@ const AllProducts = () => {
     };
     fetchProducts();
   }, [editMode]);
-
+const token  = cookie.get('token')
   // حذف المنتج
   const deleteProduct = async (id) => {
     try {
       await axios.delete(`${BaseUrl}/api/vi/product/${id}`, {
         headers: {
-          authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGEyMjc2NjQxM2Y3MjI3NWZkNjQyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNzQzNDkxMywiZXhwIjoxNzM3NTIxMzEzfQ.dirLdUBz4De-r_Wp-c3HASX3HqfvFav-Z0g_4wRbR-M",
+          authorization:`Bearer ${token}`,
         },
       });
       setProducts(products.filter((product) => product._id !== id));
@@ -57,7 +57,7 @@ const AllProducts = () => {
     try {
       const response = await axios.put(`${BaseUrl}/api/vi/product/${currentProduct._id}`, data, {
         headers: {
-          authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGEyMjc2NjQxM2Y3MjI3NWZkNjQyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNzQzNDkxMywiZXhwIjoxNzM3NTIxMzEzfQ.dirLdUBz4De-r_Wp-c3HASX3HqfvFav-Z0g_4wRbR-M",
+          authorization:`Bearer ${token}`,
         },
       });
       const updatedProduct = response.data;

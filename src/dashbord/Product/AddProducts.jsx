@@ -1,14 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
+import cookie from 'js-cookie'
+import BaseUrl from '../../../Api/BaseUrl'
 const AddProducts = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+const token  = cookie.get('token')
   const onSubmit = async (data) => {
     // إعداد البيانات لإرسالها
     const formData = new FormData();
@@ -22,9 +23,9 @@ const AddProducts = () => {
 
     try {
       // إرسال البيانات إلى السيرفر
-      const response = await axios.post("http://localhost:4000/api/vi/product", formData, {
+      const response = await axios.post(`${BaseUrl}/api/vi/product`, formData, {
         headers: {
-          authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGEyMjc2NjQxM2Y3MjI3NWZkNjQyOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNzI3MzkwNSwiZXhwIjoxNzM3MzYwMzA1fQ.GsRuAam2v6uv84KmKfJkPD91ptS7aLwzYaiymNGttMU",
+          authorization:`Bearer ${token}`,
           "Content-Type": "multipart/form-data"
         },
       });
@@ -42,7 +43,7 @@ const AddProducts = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* حقل الاسم */}
         <div className="mb-4">
-          <label htmlFor="title" className="block text-sm font-medium mb-2">
+          <label  htmlFor="title" className="block text-sm font-medium mb-2">
             Title:
           </label>
           <input
