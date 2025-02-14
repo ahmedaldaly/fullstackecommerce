@@ -9,12 +9,18 @@ import AllCategory from './dashbord/Category/AllCategory';
 import AddCategory from './dashbord/Category/AddCategory';
 import AllOrder from './dashbord/order/AllOrder';
 import HomePage from './web/HomePage/HomePage';
+import Shop from './web/shop/Shop';
+import ShopCard from './auth/ShopCard';
+import SignUp from './auth/SignUp';
 const App = () => {
   return (
     
       <Routes>
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/card' element={<ShopCard/>}/>
         <Route path='/' element={<Home/>}>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/shop' element={<Shop/>}/>
         </Route> 
 
         <Route path='/dashbord' element ={<HomeDashbord/>}>

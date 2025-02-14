@@ -46,8 +46,8 @@ const New = () => {
         </div>
         {/*  */}
         <motion.div
-         initial={{opacity:0,marginTop:'200px'}}
-         whileInView={{opacity:1,marginTop:0}}
+         initial={{opacity:0, scale:1.2}}
+         whileInView={{opacity:1 ,scale:1}}
          transition={{duration:0.5}}
         className='h-auto w-auto relative  '>
             <div className='w-[700px] overflow-hidden h-auto rounded-xl'>
