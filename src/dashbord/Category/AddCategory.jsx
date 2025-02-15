@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import cookie from 'js-cookie'
+import BaseUrl from "../../../Api/BaseUrl";
 const AddCategoey = () => {
   const {
     register,
@@ -17,7 +18,7 @@ const token  = cookie.get('token')
 
     try {
       // إرسال البيانات إلى السيرفر
-      const response = await axios.post("http://localhost:4000/api/vi/category", formData, {
+      const response = await axios.post(`${BaseUrl}/api/vi/category`, formData, {
         headers: {
           authorization:`Bearer ${token}`,
           "Content-Type": "multipart/form-data"

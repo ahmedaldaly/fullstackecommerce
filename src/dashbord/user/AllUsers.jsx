@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import * as motion from 'motion/react-client'
+import BaseUrl from '../../../Api/BaseUrl'
 const AllUsers = () => {
     const [user, setUser] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
         async function fetch() {
             try {
-                const data =await axios.get ('http://localhost:4000/api/vi/users')
+                const data =await axios.get (`${BaseUrl}/api/vi/users`)
                 .then((data)=>{
                     setUser(data.data.data)
                     console.log(data.data.data)
@@ -22,7 +23,7 @@ const AllUsers = () => {
 
     async function delet(id) {
         try {
-          await axios.delete(`http://localhost:4000/api/vi/users/${id}`);
+          await axios.delete(`${BaseUrl}/api/vi/users/${id}`);
           setUser((prevUsers) => prevUsers.filter((user) => user._id !== id)); // تحديث الحالة
         } catch (err) {
           console.log(err);
@@ -31,7 +32,7 @@ const AllUsers = () => {
 
       async function edit(id ,admin) {
         try {
-          await axios.put(`http://localhost:4000/api/vi/users/${id}`,{
+          await axios.put(`${BaseUrl}/api/vi/users/${id}`,{
             isAdmin:!admin,
           });
           setUser((prevUsers) =>

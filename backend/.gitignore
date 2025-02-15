@@ -1,8 +1,0 @@
-# Ignore node_modules directory
-node_modules/
-
-# Ignore frontend directory
-frontend/
-
-# Ignore .env file
-.env
