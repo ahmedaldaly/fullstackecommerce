@@ -41,7 +41,7 @@ const HomePage = () => {
     <>
     <div className="w-full overflow-hidden flex max-lg:block max-md:px-2 max-2xl:px-10 2xl:px-60">
       
-      <Swiper
+    <Swiper
         pagination={{
           dynamicBullets: true,
         }}

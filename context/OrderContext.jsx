@@ -31,7 +31,7 @@ export const OrderProvider = ({ children }) => {
     };
 
     fetchOrders();
-  }, []);
+  });
 
   return (
     <OrderContext.Provider value={{ orders }}>

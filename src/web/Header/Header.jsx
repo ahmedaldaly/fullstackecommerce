@@ -27,12 +27,12 @@ const Header = () => {
   const { orders } = useOrders(); //استيراد الاوردر
   
   useEffect(() => {
-    if (orders.products) {
-      setGetOrder(orders.products);
+    if (orders) {
+      setGetOrder(orders);
     } else {
       setGetOrder([]); // تعيين مصفوفة فارغة في حال لم يكن هناك بيانات
     }
-  }, [orders]);
+  });
   
   
   useEffect(() => {
@@ -54,8 +54,10 @@ const Header = () => {
       });
       const token = res.data.token;
       const id = res.data.user.id;
+      const admin = res.data.user.isAdmin;
       Cookies.set("token", token, { expires: 4 })
       Cookies.set("id", id, { expires: 4 })
+      Cookies.set("admin", admin, { expires: 4 })
       alert("Login successful!");
       setLogin(!login)
 
@@ -70,6 +72,7 @@ const Header = () => {
     }
   };
   const gettoken = Cookies.get('token')
+
   useEffect(() => {
     async function fetch() {
       const gettoken = Cookies.get('token')
@@ -86,7 +89,7 @@ const Header = () => {
       catch (err) { console.log(err) }
     }
     fetch()
-  }, [deletefev])
+  },)
   async function deletefev(id) {
     const token = Cookie.get('token');
     try {
