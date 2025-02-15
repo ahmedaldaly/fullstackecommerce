@@ -1,3 +1,3 @@
-const BaseUrl = 'https://ecommerceappnode-4awk.vercel.app';
+const BaseUrl = 'https://ecommerceappnode.vercel.app';
 
 export default BaseUrl;
