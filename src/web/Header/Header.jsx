@@ -135,7 +135,7 @@ const Header = () => {
     }
     fetch()
   }, [val])
-
+const admin = Cookie.get('admin')
   return (
     <div
       className={`fixed z-10 w-full h-24 lg:px-32 py-8 top-0 flex justify-evenly transition-shadow duration-300 ${isScrolled ? 'shadow-lg bg-white' : 'shadow-none bg-transparent'
@@ -228,6 +228,9 @@ const Header = () => {
             <FaRegUser />
           </span>
         )}
+        {
+          admin$$<Link to='/dashbord'>admin dashbord</Link>
+        }
       </div>
 
       {/* الشريط الجانبي */}
