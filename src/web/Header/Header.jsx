@@ -228,9 +228,9 @@ const admin = Cookie.get('admin')
             <FaRegUser />
           </span>
         )}
-        {
-          admin$$<Link to='/dashbord'>admin dashbord</Link>
-        }
+       {
+  admin && <Link to='/dashbord'>admin dashbord</Link>
+}
       </div>
 
       {/* الشريط الجانبي */}
